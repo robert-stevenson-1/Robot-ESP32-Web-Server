@@ -56,7 +56,7 @@ void setup()
     request->send(SD, "/index.html", "text/html"); 
   });
 
-  server.on("/LED_TOGGLE", HTTP_POST, handleLedTogglePOST,
+  server.on("/btnOne", HTTP_POST, handleLedTogglePOST,
             NULL,
             [](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
             {
@@ -70,8 +70,8 @@ void setup()
               DynamicJsonDocument jsonData(128);
               DeserializationError error = deserializeJson(jsonData, data);
 
-              Serial.print("ledToggle (Json) val: "); Serial.println(jsonData["ledToggle"].as<bool>());
-              digitalWrite(32, jsonData["ledToggle"].as<bool>() ? HIGH : LOW);
+              Serial.print("btnOneState (Json) val: "); Serial.println(jsonData["btnOneState"].as<bool>());
+              digitalWrite(32, jsonData["btnOneState"].as<bool>() ? HIGH : LOW);
               
 
               DynamicJsonDocument jsonResponse(256);
