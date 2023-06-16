@@ -72,7 +72,16 @@ void setup()
 
               Serial.print("ledToggle (Json) val: "); Serial.println(jsonData["ledToggle"].as<bool>());
               digitalWrite(32, jsonData["ledToggle"].as<bool>() ? HIGH : LOW);
-              request->send(200);
+              
+
+              DynamicJsonDocument jsonResponse(256);
+              String jsonString;
+
+              jsonResponse["data"] = "Received JSON Data";
+
+              serializeJson(jsonResponse, jsonString);
+              
+              request->send(200, "application/json", jsonString);
             });
 
   server.serveStatic("/", SD, "/");
