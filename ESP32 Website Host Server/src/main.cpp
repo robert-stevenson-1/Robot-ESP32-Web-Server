@@ -6,10 +6,11 @@
 #include "SD.h"
 #include "SPI.h"
 #include <ArduinoJson.h>
+#include "WiFi_Config.h"
 
 // Replace with your network credentials
-const char *ssid = "BT-N8CMZX";
-const char *password = "KYXDT7gEd3MQCH";
+const char *ssid = WIFI_SSID;
+const char *password = WIFI_PASSWORD;
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
