@@ -1,28 +1,21 @@
-var ledState = false;
+var btnOneState = false;
 
-async function ledToggle() {
-    //make a get request to the ESP to toggle the LED
-    ledState = ledState ? false : true;
-    
-    const resp = await fetch("/LED_TOGGLE", {
+async function btnOne() {
+    //toggle the button State
+    btnOneState = btnOneState ? false : true
+    //make a get request to the ESP
+    const resp = await fetch("/btnOne", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            ledToggle: ledState,
+            btnOneState: btnOneState,
         })
     }).then(function (response) {
-        
         console.log(response);
         return response.json();
-
     }).then(function (data){
-        
         console.log(data);
-
-        // get the button html element
-        // var btn = document.getElementById("LED_TOGGLE");
-        // btn.className = "LED_TOGGLE_ON";
     });
 }

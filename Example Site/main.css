@@ -3,6 +3,9 @@ html {
     text-align: center;
 }
 body {
-    max-width: 400px; 
-    margin:0px auto;
+    max-width: 50%;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    margin:10px auto;
 }
