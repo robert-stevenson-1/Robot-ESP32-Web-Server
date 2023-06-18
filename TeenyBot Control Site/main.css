@@ -37,24 +37,53 @@ body {
   padding: 0px !important;
   background-color: var(--colorForeground);
   height: 100vh;
+  min-width: 400px;
   width: 100vw;
 }
 h1 {
   margin: 5px 0px;
+  font-size: 4vw;
+  overflow-wrap: break-word
 }
 h2 {
   margin: 5px 0px;
+  font-size: 3vw;
+  overflow-wrap: break-word
 }
 h3 {
   margin: 5px 0px;
+  font-size: 2.5vw;
+  overflow-wrap: break-word
 }
 h4 {
   margin: 5px 0px;
+  font-size: 2vw;
+  overflow-wrap: break-word
 }
 button {
+  --button-size: 10vw;
   color: var(--colorButtonText);
   background-color: var(--colorButton);
   border-color: var(--colorButtonAccent);
+  border: solid var(--colorButtonAccent) 5px;
+  box-shadow: 0 0 30px var(--colorButtonShadow);
+  -webkit-box-shadow: 0 0 30px var(--colorButtonShadow);
+  -moz-box-shadow: 0 0 30px var(--colorButtonShadow);
+  margin: auto;
+  /* max-width: 100px; */
+  /* max-height: 100px; */
+  /* width: 75px; */
+  /* height: 75px; */
+  /* min-width: 55px; */
+  /* min-height: 55px; */
+  min-width: var(--button-size);
+  min-width: var(--button-size);
+  width: var(--button-size);
+  height: var(--button-size);
+  max-height: var(--button-size);
+  max-height: var(--button-size);
+  font-size: 1.25vw;
+  overflow-wrap: break-word
 }
 button:hover {
   border: 2px solid var(--colorBorderHover);
@@ -65,10 +94,11 @@ button:hover {
   display: flex;
   /* justify-content: center; */
   align-items: center;
-  height: 100vh; /* Adjust the height as needed */
-  margin: 5px auto !important; /*Center Horizontally*/
+  /*height: 100vh; /* Adjust the height as needed */
+  margin: 5px !important; /*Center Horizontally*/
   width: fit-content; /* Take only the width required for the grid*/
-  height: 200px;
+  height: fit-content; /* Take only the width required for the grid*/
+  /* height: 200px; */
 }
 .button-row {
   display: flex;
@@ -82,19 +112,22 @@ button:hover {
   align-items: center;
   justify-content: center;
   width: auto;
-  height: fit-content;
-  background: linear-gradient(
+  /* aspect-ratio: ; */
+  /* height: fit-content; */
+  height: auto;
+  /* background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.1),
     rgba(255, 255, 255, 0)
-  );
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(25px);
+  ); */
+  /* -webkit-backdrop-filter: blur(10px); */
+  /* backdrop-filter: blur(25px); */
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.37);
   border: 1px solid var(--colorStroke);
   border-radius: 10px;
   padding: 5px;
   margin: 5px 5px;
+  overflow-wrap: break-word
 }
 .tight {
   width: fit-content;
@@ -149,31 +182,38 @@ button:hover {
 */
 .main-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-auto-rows: 1fr; /* Adjusts cell height to occupy available space */
   grid-auto-columns: 1fr; /* Adjusts cell height to occupy available space */
   grid-column-gap: 5px;
   grid-row-gap: 5px;
+  min-width: 100%;
 }
-
 .status-info-cell {
   grid-area: 1 / 1 / 2 / -1; /* Extends to fill the whole width */
 }
 .update-info-cell {
-  grid-area: 2 / 1 / 2 / 2;
+  grid-area: 2 / 1 / 2 / 3;
   /* padding: 10px; */
   height: auto;
+  /* min-height: vh; */
 }
 .controller-cell {
-  grid-area: 2 / 2 / 2 / 3;
+  grid-area: 3 / 3 / 2 / 3;
+  /* padding: 3px; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* min-width: 33vw; */
+  /* min-height: 33vw; */
+  /* width: fit-content; */
+  /* height: fit-content; */
 }
 .control-panel-cell {
   grid-area: 3 / 1 / 3 / -1; /*extend to fill whole width*/
 }
 
 /* update info panel */
-
 .update-info-header {
   margin-bottom: 10px;
   border-bottom: 5px double var(--colorStroke);
@@ -184,13 +224,21 @@ button:hover {
 
 /* controller grid */
 .controller-grid {
+  --side-len: 33vw;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
   align-content: center;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+  /* height: var(--side-len); */
+  /* width: var(--side-len); */
+  /* max-width: var(--side-len); */
+  /* max-height: var(--side-len); */
 }
 .cell1 {
   grid-area: 1 / 1 / 2 / 2;
@@ -249,16 +297,13 @@ button:hover {
 
 /* controller buttons */
 .btn-controller {
-  max-width: 100px;
-  max-height: 100px;
-  width: 75px;
-  height: 75px;
-  min-width: 55px;
-  min-height: 55px;
   border: solid var(--colorButtonAccent) 5px;
   box-shadow: 0 0 30px var(--colorButtonShadow);
   -webkit-box-shadow: 0 0 30px var(--colorButtonShadow);
   -moz-box-shadow: 0 0 30px var(--colorButtonShadow);
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
 }
 .btn-controller-right {
   border-radius: 25% 75% 75% 25% / 50% 50% 50% 50%;
