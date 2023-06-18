@@ -1,16 +1,87 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<html class="page-gradient">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>ESP32 Site</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
-</head>
-<body>
-    <h1>TeenyBot Server</h1>
-    <h2>Control Panel for interfacing with TeenyBot</h2>
-    <button type="button" id="BTN_1" class="" onclick="btnOne()">Button</button>
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <body class="container">
+    <header class="container">
+      <h1>TeenyBot Server</h1>
+      <h2>Control Panel for interfacing with TeenyBot</h2>
+      <nav></nav>
+    </header>
+
+    <div class="main-layout">
+      <div class="status-info-cell">
+        <div class="container tight-height">
+          <h3>Status Info</h3>
+        </div>
+      </div>
+
+      <div class="controller-cell grid-container container tight">
+        <div class="controller-grid">
+          <div class="cell2">
+            <button
+              type="button"
+              id="BTN_UP"
+              class="btn-controller btn-controller-up"
+              onclick="btnOne()"
+            >
+              DRIVE
+            </button>
+          </div>
+          <div class="cell4">
+            <button
+              type="button"
+              id="BTN_RIGHT"
+              class="btn-controller btn-controller-left"
+              onclick="btnOne()"
+            >
+              TURN LEFT
+            </button>
+          </div>
+          <div class="cell6">
+            <button
+              type="button"
+              id="BTN_LEFT"
+              class="btn-controller btn-controller-right"
+              onclick="btnOne()"
+            >
+              TURN RIGHT
+            </button>
+          </div>
+          <div class="cell8">
+            <button
+              type="button"
+              id="BTN_DOWN"
+              class="btn-controller btn-controller-down"
+              onclick="btnOne()"
+            >
+              RE-<br />VERSE
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="update-info-cell container">
+        <div class="update-info-header">
+          <h4>Robot Updates</h4>
+        </div>
+        <div class="update-info-body ">
+        </div>
+      </div>
+
+      <div class="control-panel-cell container button-row">
+        <button type="button" class="btn-controller">Button 1</button>
+        <button type="button" class="btn-controller">Button 2</button>
+        <button type="button" class="btn-controller">Button 3</button>
+        <button type="button" class="btn-controller">Button 4</button>
+        <button type="button" class="btn-controller">Button 5</button>
+      </div>
+    </div>
+  </body>
 </html>
