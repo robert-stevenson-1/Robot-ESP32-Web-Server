@@ -30,7 +30,7 @@
               type="button"
               id="BTN_UP"
               class="btn-controller btn-controller-up"
-              onclick="btnOne()"
+              onclick="btnDrive()"
             >
               DRIVE
             </button>
@@ -40,7 +40,7 @@
               type="button"
               id="BTN_RIGHT"
               class="btn-controller btn-controller-left"
-              onclick="btnOne()"
+              onclick="btnLeft()"
             >
               TURN LEFT
             </button>
@@ -50,7 +50,7 @@
               type="button"
               id="BTN_LEFT"
               class="btn-controller btn-controller-right"
-              onclick="btnOne()"
+              onclick="btnRight()"
             >
               TURN RIGHT
             </button>
@@ -60,7 +60,7 @@
               type="button"
               id="BTN_DOWN"
               class="btn-controller btn-controller-down"
-              onclick="btnOne()"
+              onclick="btnReverse()"
             >
               REVERSE
             </button>
@@ -77,11 +77,11 @@
       </div>
 
       <div class="control-panel-cell container button-row tight-height">
-        <button type="button" class="general-button">Button 1</button>
-        <button type="button" class="general-button">Button 2</button>
-        <button type="button" class="general-button">Button 3</button>
-        <button type="button" class="general-button">Button 4</button>
-        <button type="button" class="general-button">Button 5</button>
+        <button type="button" class="general-button" onclick="btnOne()">Button 1</button>
+        <button type="button" class="general-button" onclick="btnTwo()">Button 2</button>
+        <button type="button" class="general-button" onclick="btnThree()">Button 3</button>
+        <button type="button" class="general-button" onclick="btnFour()">Button 4</button>
+        <button type="button" class="general-button" onclick="btnFive()">Button 5</button>
       </div>
     </div>
   </body>
