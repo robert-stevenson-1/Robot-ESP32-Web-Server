@@ -126,7 +126,7 @@ button:hover {
   border: 1px solid var(--colorStroke);
   border-radius: 10px;
   padding: 5px;
-  margin: 5px 5px;
+  margin: 2px;
   overflow-wrap: break-word
 }
 .tight {
@@ -139,7 +139,9 @@ button:hover {
 .tight-height {
   height: fit-content;
 }
-
+.no-padding {
+  padding: 0px;
+}
 /* Theme Styling */
 .glass-effect {
   background: linear-gradient(
