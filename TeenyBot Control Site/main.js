@@ -73,5 +73,5 @@ async function btnDrive(){
     }).then(function (data){
         // Print the data
         console.log(data);
-    }
+    })
 }
