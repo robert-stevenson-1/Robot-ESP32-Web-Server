@@ -1,6 +1,7 @@
 var btnOneState = false;
 
-const RobotCMDMessageTemplate = {
+// data sent from the robot 
+const RobotCMDMessage = {
     // forward, right, reverse, left
     "dir": [false, false, false, false],
     // control panel 
@@ -23,8 +24,10 @@ const RobotCMDMessageTemplate = {
     },
 }
 
-const RobotDataTemplate = {
+// data received from the robot 
+const RobotData = {
     "msg": {
+        "robot_id" : 0,
         "uptime": 0,
         "body": "MESSAGE HERE",
     },
@@ -54,13 +57,13 @@ async function btnOne() {
  */
 async function btnDrive(){
     // Deep Copy the Template JSON Message to send to the server
-    let robotMsg = JSON.parse(JSON.stringify(RobotCMDMessageTemplate));
+    // let robotMsg = JSON.parse(JSON.stringify(RobotCMDMessageTemplate));
 
     // update the message to send
-    robotMsg["dir"][0] = true;
+    RobotCMDMessage["dir"][0] = true;
 
     // send the data to the server
-    const resp = await fetch("/btnDrive", {
+    const resp = await fetch("/RobotMove", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
