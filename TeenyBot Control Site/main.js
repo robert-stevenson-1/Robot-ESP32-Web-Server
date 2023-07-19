@@ -3,7 +3,7 @@ var btnOneState = false;
 // data sent from the robot 
 const RobotCMDMessage = {
     // forward, right, reverse, left
-    "dir": [false, false, false, false],
+    "dir": [0, 0, 0, 0],
     // control panel 
     "ctrl_panel": {
         "btn1": {
@@ -36,15 +36,21 @@ const RobotData = {
 async function btnOne() {
     //toggle the button State
     btnOneState = btnOneState ? false : true
+
+    RobotCMDMessage["dir"][0] = 0;
+    RobotCMDMessage["dir"][1] = 0;
+    RobotCMDMessage["dir"][2] = 0;
+    RobotCMDMessage["dir"][3] = 0;
+    RobotCMDMessage["dir"][3] = 0;
+    RobotCMDMessage["ctrl_panel"]["btn1"]["state"] = btnOneState;
+
     //make a get request to the ESP
     const resp = await fetch("/btnOne", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-            btnOneState: btnOneState,
-        })
+        body: JSON.stringify(RobotCMDMessage)
     }).then(function (response) {
         console.log(response);
         return response.json();
@@ -52,6 +58,7 @@ async function btnOne() {
         console.log(data);
     });
 }
+
 /**
  * Robot Drive Forwards
  */
@@ -60,7 +67,10 @@ async function btnDrive(){
     // let robotMsg = JSON.parse(JSON.stringify(RobotCMDMessageTemplate));
 
     // update the message to send
-    RobotCMDMessage["dir"][0] = true;
+    RobotCMDMessage["dir"][0] = 105;
+    RobotCMDMessage["dir"][1] = 0;
+    RobotCMDMessage["dir"][2] = 0;
+    RobotCMDMessage["dir"][3] = 0;
 
     // send the data to the server
     const resp = await fetch("/RobotMove", {
@@ -68,7 +78,96 @@ async function btnDrive(){
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(robotMsg)
+        body: JSON.stringify(RobotCMDMessage)
+    }).then(function (response){
+        // Print the response object
+        console.log(response);
+        return response.json();
+    }).then(function (data){
+        // Print the data
+        console.log(data);
+    })
+}
+
+/**
+ * Robot Turn Left
+ */
+async function btnLeft(){
+    // Deep Copy the Template JSON Message to send to the server
+    // let robotMsg = JSON.parse(JSON.stringify(RobotCMDMessageTemplate));
+
+    // update the message to send
+    RobotCMDMessage["dir"][0] = 0;
+    RobotCMDMessage["dir"][1] = 0;
+    RobotCMDMessage["dir"][2] = 0;
+    RobotCMDMessage["dir"][3] = 105;
+    // send the data to the server
+    const resp = await fetch("/RobotMove", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(RobotCMDMessage)
+    }).then(function (response){
+        // Print the response object
+        console.log(response);
+        return response.json();
+    }).then(function (data){
+        // Print the data
+        console.log(data);
+    })
+}
+
+/**
+ * Robot Turn Right
+ */
+async function btnRight(){
+    // Deep Copy the Template JSON Message to send to the server
+    // let robotMsg = JSON.parse(JSON.stringify(RobotCMDMessageTemplate));
+
+    // update the message to send
+    RobotCMDMessage["dir"][0] = 0;
+    RobotCMDMessage["dir"][1] = 105;
+    RobotCMDMessage["dir"][2] = 0;
+    RobotCMDMessage["dir"][3] = 0;
+
+    // send the data to the server
+    const resp = await fetch("/RobotMove", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(RobotCMDMessage)
+    }).then(function (response){
+        // Print the response object
+        console.log(response);
+        return response.json();
+    }).then(function (data){
+        // Print the data
+        console.log(data);
+    })
+}
+
+/**
+ * Robot Reverse
+ */
+async function btnReverse(){
+    // Deep Copy the Template JSON Message to send to the server
+    // let robotMsg = JSON.parse(JSON.stringify(RobotCMDMessageTemplate));
+
+    // update the message to send
+    RobotCMDMessage["dir"][0] = 0;
+    RobotCMDMessage["dir"][1] = 0;
+    RobotCMDMessage["dir"][2] = 105;
+    RobotCMDMessage["dir"][3] = 0;
+
+    // send the data to the server
+    const resp = await fetch("/RobotMove", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(RobotCMDMessage)
     }).then(function (response){
         // Print the response object
         console.log(response);

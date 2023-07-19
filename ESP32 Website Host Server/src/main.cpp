@@ -56,6 +56,32 @@ void setup()
     request->send(SD, "/index.html", "text/html"); 
   });
 
+  server.on("/RobotMove", HTTP_POST, handleLedTogglePOST,
+            NULL,
+            [](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
+            {
+              for (size_t i = 0; i < len; i++)
+              {
+                Serial.write(data[i]);
+              }
+
+              Serial.println();
+
+              DynamicJsonDocument jsonData(128);
+              DeserializationError error = deserializeJson(jsonData, data);
+
+              serializeJsonPretty(jsonData, Serial);
+
+              DynamicJsonDocument jsonResponse(256);
+              String jsonString;
+
+              jsonResponse["data"] = "Received JSON Data";
+
+              serializeJson(jsonResponse, jsonString);
+              
+              request->send(200, "application/json", jsonString);
+            });
+
   server.on("/btnOne", HTTP_POST, handleLedTogglePOST,
             NULL,
             [](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
@@ -70,9 +96,10 @@ void setup()
               DynamicJsonDocument jsonData(128);
               DeserializationError error = deserializeJson(jsonData, data);
 
-              Serial.print("btnOneState (Json) val: "); Serial.println(jsonData["btnOneState"].as<bool>());
-              digitalWrite(32, jsonData["btnOneState"].as<bool>() ? HIGH : LOW);
-              
+              Serial.print("btnOneState (Json) val: "); Serial.println(jsonData["ctrl_panel"]["btn1"]["state"].as<bool>());
+              digitalWrite(32, jsonData["ctrl_panel"]["btn1"]["state"].as<bool>() ? HIGH : LOW);
+
+              serializeJsonPretty(jsonData, Serial);
 
               DynamicJsonDocument jsonResponse(256);
               String jsonString;
